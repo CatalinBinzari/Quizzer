@@ -31,11 +31,27 @@ namespace Quizzer
         }
             private void button1_Click(object sender, EventArgs e)
         {
-            String login = textBox1.Text;
-            String password = textBox2.Text;
-            DBConnect db = new DBConnect();
-            db.Insert();
-            
+            try
+            {
+                DBConnect db = new DBConnect();
+                if (db.LoginUser(this.textBox1.Text, this.textBox2.Text)) 
+                {
+                    Console.WriteLine("Login succesful");
+                    base.SetVisibleCore(false);
+                    var myForm = new Form3();
+                    myForm.Show();
+      
+                }
+                else
+                {
+                    Console.WriteLine("Login insuccesful");
+                    //nu exista userul,trebuie sign up
+                }
+            }
+            catch 
+            {
+                Console.WriteLine(System.Environment.StackTrace);
+            }
 
 
 

@@ -154,6 +154,41 @@ namespace Quizzer
                 return false;
             }
         }
+        public bool LoginUser(String username, String password)
+        {
+            String tmp = "";
+            string query = "SELECT exists(select id from users where `login` = '" + username + "' and `password` = '" + password + "' )";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tmp = dataReader[0].ToString();
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                if (tmp == "1")
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void Insert()
         {
             string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
