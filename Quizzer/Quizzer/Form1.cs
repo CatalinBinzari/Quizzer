@@ -33,9 +33,9 @@ namespace Quizzer
         {
             try
             {
-                int rightsLevel = 0;
+                int rightsLevel=0 ,id = 0;
                 DBConnect db = new DBConnect();
-                if (db.LoginUser(this.textBox1.Text, this.textBox2.Text, ref rightsLevel)) 
+                if (db.LoginUser(this.textBox1.Text, this.textBox2.Text, ref rightsLevel, ref id)) 
                 {
                     base.SetVisibleCore(false);
                     
@@ -46,7 +46,7 @@ namespace Quizzer
                             myForm3.Show();
                             break;
                         case 2:
-                            var myForm4 = new Form4();
+                            var myForm4 = new Form4(this.textBox1.Text, id);
                             myForm4.Show();
                             break;
                         case 3:

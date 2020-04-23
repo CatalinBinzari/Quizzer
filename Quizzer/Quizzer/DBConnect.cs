@@ -154,10 +154,10 @@ namespace Quizzer
                 return false;
             }
         }
-        public bool LoginUser(String username, String password, ref int rightsLEvel)
-        {
+        public bool LoginUser(String username, String password, ref int rightsLEvel,ref int id)
+        {   
             String tmp = null;
-            string query = "select rightsLEvel from users where `login` = '" + username + "' and `password` = '" + password + "'";
+            string query = "select rightsLEvel, id from users where `login` = '" + username + "' and `password` = '" + password + "'";
 
             //Open connection
             if (this.OpenConnection() == true)
@@ -171,6 +171,7 @@ namespace Quizzer
                 while (dataReader.Read())
                 {
                     tmp = dataReader[0].ToString();
+                    id = Int32.Parse(dataReader[1].ToString());
                 }
 
                 //close Data Reader
@@ -191,9 +192,9 @@ namespace Quizzer
                 return false;
             }
         }
-        public void Insert()
+        public void Insert(string query)
         {
-            string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
+            //string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
 
             //open connection
             if (this.OpenConnection() == true)
