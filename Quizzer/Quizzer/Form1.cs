@@ -36,16 +36,13 @@ namespace Quizzer
                 DBConnect db = new DBConnect();
                 if (db.LoginUser(this.textBox1.Text, this.textBox2.Text)) 
                 {
-                    Console.WriteLine("Login succesful");
                     base.SetVisibleCore(false);
-                    var myForm = new Form3();
+                    var myForm = new Form4();
                     myForm.Show();
-      
                 }
                 else
-                {
-                    Console.WriteLine("Login insuccesful");
-                    //nu exista userul,trebuie sign up
+                {   
+                    MessageBox.Show("Login insuccesful");
                 }
             }
             catch 

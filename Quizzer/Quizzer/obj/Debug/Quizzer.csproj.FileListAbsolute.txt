@@ -1,7 +1,6 @@
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\bin\Debug\Quizzer.exe.config
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\bin\Debug\Quizzer.exe
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\bin\Debug\Quizzer.pdb
-C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.csprojAssemblyReference.cache
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Properties.Resources.resources
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.csproj.GenerateResource.cache
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.exe
@@ -15,3 +14,4 @@ C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\bin\Debug\Re
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\bin\Debug\MySql.Data.xml
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.csproj.CopyComplete
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form2.resources
+C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form4.resources
