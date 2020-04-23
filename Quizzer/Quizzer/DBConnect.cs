@@ -154,10 +154,10 @@ namespace Quizzer
                 return false;
             }
         }
-        public bool LoginUser(String username, String password)
+        public bool LoginUser(String username, String password, ref int rightsLEvel)
         {
-            String tmp = "";
-            string query = "SELECT exists(select id from users where `login` = '" + username + "' and `password` = '" + password + "' )";
+            String tmp = null;
+            string query = "select rightsLEvel from users where `login` = '" + username + "' and `password` = '" + password + "'";
 
             //Open connection
             if (this.OpenConnection() == true)
@@ -179,7 +179,9 @@ namespace Quizzer
                 //close Connection
                 this.CloseConnection();
 
-                if (tmp == "1")
+                rightsLEvel = Int32.Parse(tmp);
+
+                if (!String.IsNullOrEmpty(tmp))
                     return true;
                 else
                     return false;
