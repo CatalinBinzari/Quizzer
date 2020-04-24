@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Yes";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -90,10 +92,11 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "No";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(153, 142);
+            this.button1.Location = new System.Drawing.Point(153, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -103,7 +106,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(241, 142);
+            this.button2.Location = new System.Drawing.Point(241, 172);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 7;
@@ -146,11 +149,19 @@
             this.textBox2.Size = new System.Drawing.Size(163, 20);
             this.textBox2.TabIndex = 11;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(16, 156);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(300, 10);
+            this.progressBar1.TabIndex = 12;
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 178);
+            this.ClientSize = new System.Drawing.Size(328, 207);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
@@ -183,5 +194,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
