@@ -27,19 +27,20 @@ namespace Quizzer
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {   progressBar1.PerformStep();
+        {   
             string querry = null;
             querry = "INSERT INTO usertests (id, numberOfQuestions, tableName, studentClass, instantMark)" +
                 "VALUES ('"+ userId + "','"+ numericUpDown1.Value + "','"+ textBox1.Text + "','"+ textBox2.Text + "','"+radioButtonState+"')";
             DBConnect db = new DBConnect();
-            db.Insert(querry);
-            progressBar1.PerformStep();
-            progressBar1.PerformStep();
-            progressBar1.PerformStep();
-
+            try{
+                db.Insert(querry);
+            }catch{
+                MessageBox.Show("Test has not created.");
+            }
+            MessageBox.Show("Test created.");
         }
 
-        private void radioButtons_CheckedChanged(object sender, EventArgs e)
+    private void radioButtons_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
 
