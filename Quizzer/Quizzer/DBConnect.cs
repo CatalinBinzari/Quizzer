@@ -228,6 +228,37 @@ namespace Quizzer
                 this.CloseConnection();
             }
         }
+        public string GetTestId()
+        {
+            String tmp = "";
+            string query = "select max(test_id) from usertests";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tmp = dataReader[0].ToString();
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+                return tmp;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         //Update statement
         public void Update()

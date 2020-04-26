@@ -295,6 +295,7 @@
             this.button3.TabIndex = 13;
             this.button3.Text = "Submit";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox4
             // 
@@ -338,9 +339,11 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(21, 498);
+            this.progressBar1.Maximum = 20;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1100, 23);
             this.progressBar1.TabIndex = 7;
+            this.progressBar1.Value = 1;
             // 
             // button2
             // 

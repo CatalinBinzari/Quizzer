@@ -53,13 +53,15 @@ namespace Quizzer
         {
             var myForm6 = new Form6(this.userId, this);
             myForm6.Show();
-            Console.WriteLine("test");
+            
         }
         public void InitializePanel1(string testName, int qnr, string sclass)
         {
             qnumber = qnr;
             ql = new qlist[qnumber];
+            progressBar1.Maximum = qnumber;
             
+
             this.label6.Text = this.label6.Text + " " + testName;
             this.label7.Text = this.label7.Text + " " + qnumber;
             this.label8.Text = this.label8.Text + " " + sclass;
@@ -73,7 +75,7 @@ namespace Quizzer
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   
            ql[qinxex] = new qlist(qinxex+1, richTextBox1.Text, textBox1.Text, textBox2.Text
                , textBox3.Text, textBox4.Text, 1);
            
@@ -81,7 +83,9 @@ namespace Quizzer
             //ql++ va incrementa si va afisa ce are in urmatorul index daca are 
             
             ++qinxex;
-            try { 
+           
+            try {
+                progressBar1.Value = qinxex+1;
                 if (ql[qinxex].testQuestionNumber == 0)
                 {
                     richTextBox1.Text = string.Empty;
@@ -103,7 +107,7 @@ namespace Quizzer
                 
                 }
             }
-            catch (System.IndexOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("Can not increment more.");
                 richTextBox1.Text = ql[--qinxex].question.ToString();
@@ -115,7 +119,9 @@ namespace Quizzer
             ql[qinxex] = new qlist(qinxex + 1, richTextBox1.Text, textBox1.Text, textBox2.Text
                , textBox3.Text, textBox4.Text, 1);
             --qinxex;
+            
             try {
+                progressBar1.Value = qinxex+1;
                 richTextBox1.Text = ql[qinxex].question.ToString();
                 textBox1.Text = ql[qinxex].rs1;
                 textBox2.Text = ql[qinxex].rs2;
@@ -123,13 +129,42 @@ namespace Quizzer
                 textBox4.Text = ql[qinxex].rs4;
                 this.label9.Text = "Question number " + (qinxex + 1).ToString();
             }
-            catch (System.IndexOutOfRangeException) 
+            catch (Exception) 
             {
-                MessageBox.Show("Can not decrement more.");
+                
                 richTextBox1.Text = ql[++qinxex].question.ToString();
+                progressBar1.Value = qinxex + 1;
+                MessageBox.Show("Can not decrement more.");
+                
+                
             }
            
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ql[qinxex] = new qlist(qinxex + 1, richTextBox1.Text, textBox1.Text, textBox2.Text
+               , textBox3.Text, textBox4.Text, 1);
+            string querry = null;
+            DBConnect db = new DBConnect();
+            foreach (qlist element in ql)
+            {
+                querry = "INSERT INTO questions (id, test_id, question, rs1, rs2, rs3, rs4, correct)" +
+                "VALUES ('" + userId + "','" + db.GetTestId() + "','" + element.question + "','" + element.rs1 + "','"
+                + element.rs2 + "','"+ element.rs3 + "','" + element.rs4 + "','"+ element.correctRsNumber + "')";
+                try
+                {
+                    db.Insert(querry);
+                }
+                catch
+                {
+                    MessageBox.Show("Question not added.");
+                }
+            }
+            MessageBox.Show("Test uploaded.");
+            panel1.Visible = false;
+
         }
     }
 }
