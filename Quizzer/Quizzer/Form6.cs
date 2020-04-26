@@ -12,11 +12,13 @@ namespace Quizzer
 {
     public partial class Form6 : Form
     {
+        public Form4 _form4;
         private int userId;
         private bool radioButtonState;
 
-        public Form6(int userId)
+        public Form6(int userId, Form4 form4)
         {
+            this._form4 = form4;
             this.userId = userId;
             InitializeComponent();
         }
@@ -35,9 +37,13 @@ namespace Quizzer
             try{
                 db.Insert(querry);
             }catch{
-                MessageBox.Show("Test has not created.");
+                MessageBox.Show("Test has not been created.");
             }
             MessageBox.Show("Test created.");
+            _form4.panel1.Visible = true;
+            _form4.InitializePanel1(textBox1.Text, Decimal.ToInt32(numericUpDown1.Value), textBox2.Text);//testname,numberofquestions,studentClass
+            ActiveForm.Dispose();
+
         }
 
     private void radioButtons_CheckedChanged(object sender, EventArgs e)

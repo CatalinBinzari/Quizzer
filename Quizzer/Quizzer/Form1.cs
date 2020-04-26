@@ -37,7 +37,7 @@ namespace Quizzer
                 DBConnect db = new DBConnect();
                 if (db.LoginUser(this.textBox1.Text, this.textBox2.Text, ref rightsLevel, ref id)) 
                 {
-                    base.SetVisibleCore(false);
+                    this.SetVisibleCore(false);
                     
                     switch (rightsLevel)
                     {
