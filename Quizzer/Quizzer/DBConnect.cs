@@ -297,6 +297,37 @@ namespace Quizzer
                 return null;
             }
         }
+        public int GetNumberOfQuestions(int test_id)
+        {
+            String tmp = "";
+            string query = "select numberOfQuestions from usertests where `test_id` = '"+test_id+"'";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tmp = dataReader[0].ToString();
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+                return Int32.Parse(tmp);
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public string GetStudentClassName(int id)
         {
             String tmp = "";
