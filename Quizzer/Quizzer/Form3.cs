@@ -12,9 +12,32 @@ namespace Quizzer
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        public string className;
+        public Form3(string login,int id)
         {
             InitializeComponent();
+            DBConnect db = new DBConnect();
+            className = db.GetStudentClassName(id);
+            this.label1.Text = label1.Text + " " + login;
+            this.label2.Text = label2.Text + " " + id; 
+            this.label3.Text = label3.Text + " " + className;
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var myForm7 = new Form7(className);
+            myForm7.Show();
         }
     }
 }

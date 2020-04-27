@@ -42,7 +42,7 @@ namespace Quizzer
                     switch (rightsLevel)
                     {
                         case 1:
-                            var myForm3 = new Form3();
+                            var myForm3 = new Form3(this.textBox1.Text, id);
                             myForm3.Show();
                             break;
                         case 2:

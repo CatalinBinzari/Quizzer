@@ -36,6 +36,10 @@ namespace Quizzer
             this.textBox3.Enter += new EventHandler(textBox3_Enter);
             this.textBox3.Leave += new EventHandler(textBox3_Leave);
             textBox3_SetText();
+
+            this.textBox4.Enter += new EventHandler(textBox4_Enter);
+            this.textBox4.Leave += new EventHandler(textBox4_Leave);
+            textBox4_SetText();
         }
 
         protected void textBox1_SetText()
@@ -92,6 +96,24 @@ namespace Quizzer
                 textBox3_SetText();
         }
 
+        protected void textBox4_SetText()
+        {
+            this.textBox4.Text = "Student class";
+            textBox4.ForeColor = Color.Gray;
+        }
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            if (textBox4.ForeColor == Color.Black)
+                return;
+            textBox4.Text = "";
+            textBox4.ForeColor = Color.Black;
+        }
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            if (textBox4.Text.Trim() == "")
+                textBox4_SetText();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             label3.Text = "";
@@ -110,7 +132,7 @@ namespace Quizzer
                 this.textBox2.BackColor = Color.White;
                 this.textBox3.BackColor = Color.White;
 
-                SignUp(textBox1.Text,textBox2.Text, ++comboBox1.SelectedIndex);
+                SignUp(textBox1.Text,textBox2.Text, ++comboBox1.SelectedIndex,textBox4.Text);
             }
 
         }
@@ -131,10 +153,10 @@ namespace Quizzer
             DBConnect db = new DBConnect();
             return db.CheckUser(textBox1.Text.ToString());
         }
-        public void SignUp(string uname, string password, int rightsLevel)
+        public void SignUp(string uname, string password, int rightsLevel, string studentClass)
         {
             DBConnect db = new DBConnect();
-            db.InsertUser(uname, password, rightsLevel);
+            db.InsertUser(uname, password, rightsLevel, studentClass );
             this.label3.Text = label3.Text + "\nSign up was successful.";
 
         }

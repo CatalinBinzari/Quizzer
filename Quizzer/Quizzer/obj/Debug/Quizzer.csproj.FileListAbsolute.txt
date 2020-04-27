@@ -17,3 +17,5 @@ C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Qu
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.csprojAssemblyReference.cache
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form4.resources
 C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form6.resources
+C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form3.resources
+C:\Users\cb\Desktop\PAOO\PAOO_final_project\Quizzer\Quizzer\Quizzer\obj\Debug\Quizzer.Form7.resources

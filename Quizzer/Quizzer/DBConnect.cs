@@ -119,6 +119,43 @@ namespace Quizzer
                 return list;
             }
         }
+        public List<string> GetUserTests(string userClass, ref List<string> test_id_list)
+        {
+            string query = "select test_id, tableName from usertests where `studentClass` = '"+ userClass + "'";
+
+            //Create a list to store the result
+            List<string> list = new List<string>();
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    test_id_list.Add(dataReader["test_id"] + "");
+                    list.Add(dataReader["tableName"] + "");
+                    
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public bool CheckUser(String username)
         {
             String tmp="";
@@ -210,10 +247,10 @@ namespace Quizzer
             }
         }
         //Insert statement
-        public void InsertUser(string uname, string password, int rightsLevel)
+        public void InsertUser(string uname, string password, int rightsLevel, string studentClass)
         {
-            string query = String.Format("insert into users (login, password,rightsLevel) values ('{0}', '{1}', '{2}')"
-                ,uname,password,rightsLevel);
+            string query = String.Format("insert into users (login, password, rightsLevel, studentClass) values ('{0}', '{1}', '{2}', '{3}')"
+                , uname, password, rightsLevel, studentClass);
 
             //open connection
             if (this.OpenConnection() == true)
@@ -228,6 +265,7 @@ namespace Quizzer
                 this.CloseConnection();
             }
         }
+        
         public string GetTestId()
         {
             String tmp = "";
@@ -259,6 +297,38 @@ namespace Quizzer
                 return null;
             }
         }
+        public string GetStudentClassName(int id)
+        {
+            String tmp = "";
+            string query = "select studentClass from users where `id` = '"+id+"'";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tmp = dataReader[0].ToString();
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+                return tmp;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         //Update statement
         public void Update()
