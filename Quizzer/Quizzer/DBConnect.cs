@@ -359,6 +359,45 @@ namespace Quizzer
                 return null;
             }
         }
+        public void GetQuestions(ref Form3.qlist []ql, int test_id)
+        {
+            
+            string query = "select question, rs1, rs2, rs3, rs4 from questions where `test_id` = '"+ test_id +"'";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                int index = 0;
+                while (dataReader.Read())
+                {
+                    ql[index].question = dataReader[0].ToString();
+                    ql[index].rs1 = dataReader[1].ToString();
+                    ql[index].rs2 = dataReader[2].ToString();
+                    ql[index].rs3 = dataReader[3].ToString();
+                    ql[index].rs4 = dataReader[4].ToString();
+                    ql[index].testQuestionNumber = index + 1;
+                    ++index;
+
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+                //return Int32.Parse(tmp);
+            }
+            else
+            {
+                //return 0;
+            }
+        }
 
 
         //Update statement
