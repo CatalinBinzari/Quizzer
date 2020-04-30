@@ -15,6 +15,9 @@ namespace Quizzer
         public Form1()
         {
             InitializeComponent();
+            Image image = Image.FromFile("image0.jpg");
+            pictureBox1.Image = image;
+            this.Text = "Authentication";
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,16 +40,16 @@ namespace Quizzer
                 DBConnect db = new DBConnect();
                 if (db.LoginUser(this.textBox1.Text, this.textBox2.Text, ref rightsLevel, ref id)) 
                 {
-                    this.SetVisibleCore(false);
+                    this.Visible=false;
                     
                     switch (rightsLevel)
                     {
                         case 1:
-                            var myForm3 = new Form3(this.textBox1.Text, id);
+                            var myForm3 = new Form3(this.textBox1.Text, id, this);
                             myForm3.Show();
                             break;
                         case 2:
-                            var myForm4 = new Form4(this.textBox1.Text, id);
+                            var myForm4 = new Form4(this.textBox1.Text, id, this);
                             myForm4.Show();
                             break;
                         case 3:

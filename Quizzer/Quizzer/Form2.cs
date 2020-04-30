@@ -15,6 +15,7 @@ namespace Quizzer
         public Form2()
         {
             InitializeComponent();
+            this.Text = "Sign up";
         }
 
         private void Form2_Load(object sender, EventArgs e)

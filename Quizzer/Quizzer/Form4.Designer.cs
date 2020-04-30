@@ -101,7 +101,7 @@
             this.yourProfileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changePasswordToolStripMenuItem});
             this.yourProfileToolStripMenuItem.Name = "yourProfileToolStripMenuItem";
-            this.yourProfileToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.yourProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.yourProfileToolStripMenuItem.Text = "Your profile";
             // 
             // changePasswordToolStripMenuItem
@@ -113,14 +113,15 @@
             // yourTestsToolStripMenuItem
             // 
             this.yourTestsToolStripMenuItem.Name = "yourTestsToolStripMenuItem";
-            this.yourTestsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.yourTestsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.yourTestsToolStripMenuItem.Text = "Your tests";
             // 
             // signOutToolStripMenuItem
             // 
             this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
-            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.signOutToolStripMenuItem.Text = "Sign out";
+            this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
             // createTestToolStripMenuItem
             // 

@@ -18,14 +18,16 @@ namespace Quizzer
         public int qindex = 0;
         public int id;
         public int test_id;
+        public Form1 _form1;
         public struct qlist
         {
             public int testQuestionNumber, chosenAnswer;
             public string question, rs1, rs2, rs3, rs4;
             
         }
-        public Form3(string login,int id)
+        public Form3(string login,int id, Form1 form1)
         {
+            this._form1 = form1;
             this.id = id;
             InitializeComponent();
             DBConnect db = new DBConnect();
@@ -142,6 +144,12 @@ namespace Quizzer
             myForm8.Show();
             //sumbit list
             //new database answers;
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _form1.Visible = true;
+            this.Close();
         }
     }
 }

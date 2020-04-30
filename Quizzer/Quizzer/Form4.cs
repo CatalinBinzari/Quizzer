@@ -15,6 +15,7 @@ namespace Quizzer
         private static int qnumber;
         private int userId;
         qlist[] ql;
+        public Form1 _form1;
         public struct qlist
         {
             public int testQuestionNumber;
@@ -32,8 +33,9 @@ namespace Quizzer
             }
         }
 
-        public Form4(string user, int id)
+        public Form4(string user, int id, Form1 form1)
         {
+            this._form1 = form1;
             this.userId = id;
             InitializeComponent();
             InitializeLowPanel(user, id);
@@ -165,6 +167,13 @@ namespace Quizzer
             MessageBox.Show("Test uploaded.");
             panel1.Visible = false;
 
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _form1.Visible=true;
+            this.Close();
+            
         }
     }
 }
